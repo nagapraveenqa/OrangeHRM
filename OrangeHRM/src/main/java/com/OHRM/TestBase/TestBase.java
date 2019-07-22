@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -37,11 +39,7 @@ import com.qa.lib.WebElementListener;
 		public static ExtentHtmlReporter htmlReporter;
 		public static ExtentReports extent;
 		public static EventFiringWebDriver e_driver;
-		
-		
-	
-		
-		
+			
 		public TestBase() {
 			try {
 				FileInputStream fi = new FileInputStream("E:\\praveen\\OrangeHRM\\src\\main\\java\\com\\OHRM\\Config\\config.properties");
@@ -86,13 +84,13 @@ import com.qa.lib.WebElementListener;
 				break;
 	
 			case "firefox":
-				System.setProperty("webdriver.chrome.driver", "");
-				driver = new ChromeDriver();
+				System.setProperty("webdriver.gecho.driver", "");
+				driver = new FirefoxDriver();
 				break;
 	
 			case "ie":
-				System.setProperty("webdriver.chrome.driver", "");
-				driver = new ChromeDriver();
+				System.setProperty("webdriver.ie.driver", "");
+				driver = new InternetExplorerDriver();
 				break;
 	
 			default:
@@ -126,10 +124,10 @@ import com.qa.lib.WebElementListener;
 				//We do pass the path captured by this mehtod in to the extent reports using "logger.addScreenCapture" method. 
 
 				//	String Scrnshot=TakeScreenshot.captuerScreenshot(driver,"TestCaseFailed");
-				String screenshotPath = TakeScreenshot.captuerScreenshot(driver, result.getName());
+				//String screenshotPath = TakeScreenshot.captuerScreenshot(driver, result.getName());
 				//To add it in the extent report 
 
-				logger1.fail("Test Case Failed Snapshot is below " + logger1.addScreenCaptureFromPath(screenshotPath));
+			//	logger1.fail("Test Case Failed Snapshot is below " + logger1.addScreenCaptureFromPath(screenshotPath));
 
 
 			}
